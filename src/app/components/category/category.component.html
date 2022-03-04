@@ -1,8 +1,13 @@
-<span class="badge bg-success">Categories</span>
+<span class="badge bg-success">Current Category </span>
+<span class="badge bg-warning">{{ currentCategory.categoryName }}</span>
 <ul class="list-group">
-  <li class="list-group-item">An item</li>
-  <li class="list-group-item">A second item</li>
-  <li class="list-group-item">A third item</li>
-  <li class="list-group-item">A fourth item</li>
-  <li class="list-group-item">And a fifth one</li>
+  <li [class]="getAllCategoryClass()" (click)="clearCurrentCategory()" routerLink="/products">Tüm Ürünler</li>
+  <li
+    (click)="setCurrentCategory(category)"
+    routerLink="/products/category/{{category.categoryId}}"
+    *ngFor="let category of categories"
+    [class]="getCurrentCategoryClass(category)"
+  >
+    {{ category.categoryName }}
+  </li>
 </ul>
